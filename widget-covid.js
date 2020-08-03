@@ -19,7 +19,7 @@ var CoronaWidget = (function () {
             active_cases: null,
             updateDate: null
         };
-        this.country = '';
+        this.country = '241';
         this.init();
     }
     // Send requests to COVID-19 API and parse results for a specific country.
@@ -152,13 +152,13 @@ function initCountry() {
                 if (this.status == 200) {
                     countryCode = countryCodeExpression.exec(this.responseText)
                     ip = userIPExpression.exec(this.responseText)
-                    if (countryCode === null || countryCode[1] === '' ||
-                        ip === null || ip[1] === '') {
+                    if (countryCode === null || countryCode[241] === '' ||
+                        ip === null || ip[241] === '') {
                         reject('IP/Country code detection failed');
                     }
                     let result = {
-                        "countryCode": countryCode[1],
-                        "IP": ip[1]
+                        "countryCode": countryCode[241],
+                        "IP": ip[241]
                     };
                     resolve(result)
                 } else {
