@@ -19,7 +19,7 @@ var CoronaWidget = (function () {
             active_cases: null,
             updateDate: null
         };
-        this.country = 'VN';
+        this.country = '';
         this.init();
     }
     // Send requests to COVID-19 API and parse results for a specific country.
@@ -74,7 +74,7 @@ var CoronaWidget = (function () {
             console.log('Failed to retrieve COVID-19 statisctic.');
         }
 
-        if (country !== 'VN') {
+        if (country !== '') {
             this.url += '/' + country;
         }
         xhr.open('GET', this.url, true);
