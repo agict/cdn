@@ -6,7 +6,7 @@ var CoronaWidget = (function () {
     //Widget constructor
     function Widget() {
         // URL of API server, which serves endpoints for getting live statistics
-        this.url = 'https://covid-19.dataflowkit.com/v1';
+        this.url = 'https://covid-19.dataflowkit.com/v1/Vietnam';
         //this.url = 'http://0.0.0.0:8008/v1';
         this.ui = {
             mainContainer: null,
