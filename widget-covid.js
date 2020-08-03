@@ -74,7 +74,7 @@ var CoronaWidget = (function () {
             console.log('Failed to retrieve COVID-19 statisctic.');
         }
 
-        if (country !== '') {
+        if (country !== 'VN') {
             this.url += '/' + country;
         }
         xhr.open('GET', this.url, true);
