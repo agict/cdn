@@ -3,11 +3,8 @@ var CoronaWidget = (function () {
     var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
     const countryCodeExpression = /loc=([\w]{2})/;
 
-    //Widget constructor
     function Widget() {
-        // URL of API server, which serves endpoints for getting live statistics
-        this.url = 'https://covid-19.dataflowkit.com/v1/Vietnam';
-        //this.url = 'http://0.0.0.0:8008/v1';
+        this.url = 'https://covid-19.dataflowkit.com/v1';
         this.ui = {
             mainContainer: null,
             country: null,
@@ -19,10 +16,9 @@ var CoronaWidget = (function () {
             active_cases: null,
             updateDate: null
         };
-        this.country = '';
+        this.country = 'Vietnam';
         this.init();
     }
-    // Send requests to COVID-19 API and parse results for a specific country.
     Widget.prototype._updateData = function (e) {
         e && e.preventDefault();
         var xhr = new XHR(),
@@ -74,7 +70,7 @@ var CoronaWidget = (function () {
             console.log('Failed to retrieve COVID-19 statisctic.');
         }
 
-        if (country !== '') {
+        if (country !== 'Vietnam') {
             this.url += '/' + country;
         }
         xhr.open('GET', this.url, true);
