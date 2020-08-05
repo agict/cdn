@@ -16,7 +16,7 @@ var CoronaWidget = (function () {
             active_cases: null,
             updateDate: null
         };
-        this.country = 'Vietnam';
+        this.country = '';
         this.init();
     }
     Widget.prototype._updateData = function (e) {
@@ -70,7 +70,7 @@ var CoronaWidget = (function () {
             console.log('Failed to retrieve COVID-19 statisctic.');
         }
 
-        if (country !== 'Vietnam') {
+        if (country !== '') {
             this.url += '/' + country;
         }
         xhr.open('GET', this.url, true);
