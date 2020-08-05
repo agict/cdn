@@ -1,0 +1,12 @@
+.covid19-card{padding: 12px;background-color: #fff;box-shadow: 0 4px 12px 0 rgba(9,32,76,.05);border-radius: 8px;overflow: hidden;}
+.covid19-title-big{display: flex;-webkit-box-align: start;align-items: start;font-size: 14px;font-weight: bold;text-overflow: ellipsis;line-height: 1.5;overflow: hidden;}
+.covid19-card .flag-img {flex-shrink: 0;width: 14px;height: 14px;margin-right: 8px;line-height: 0;border-width: 1px;border-style: solid;border-color: rgba(128, 128, 128, 0.33);border-image: initial;border-radius: 50%;}
+.covid19 icon{object-fit: cover;position: relative;height: 100%;width: 100%;}
+.covid19-row{display: flex;-webkit-box-pack: justify;justify-content: space-between;margin-top: 8px;}
+.covid19-col{margin-right: 4px;text-transform: uppercase;flex-basis: 33%;}
+.covid19-title{color: currentcolor;opacity: 0.65;font-weight: bold;text-overflow: ellipsis;font-size: 11px;min-width: initial;line-height: 1.5;overflow: hidden;}
+.covid19-num {color: currentcolor;margin-right: 4px;font-size: 14px;min-width: initial;}
+.covid19-confirmed #new-cases{color: rgb(233, 107, 56);font-weight: bold;font-size: 14px;}
+.covid19-deaths #new-deaths{color: rgb(224, 32, 32);font-weight: bold;font-size: 14px;}
+.night-mode .covid19-card {background-color: #2f3341}
+.night-mode .covid19-title-big{color: #fff}
