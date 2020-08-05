@@ -1,4 +1,3 @@
-// CoronaWidget object holds properties and methods for retrieving live statistics of COVID-19 cases.  
 var CoronaWidget = (function () {
     var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
     const countryCodeExpression = /loc=([\w]{2})/;
@@ -120,7 +119,7 @@ var CoronaWidget = (function () {
     Widget.prototype.init = function () {
         this._initUI();
         this.__initCountry().then((countryCode) => {
-            flag = '<img class="flag-img" src="https://covid-19.dataflowkit.com/assets/widget/flags/vn.svg" alt="' + countryList[countryCode] + '">';
+            flag = '<img class="flag-img" src="./flags/vn.svg" alt="' + countryList[countryCode] + '">';
             this.ui.country.innerHTML = flag + '&nbsp' + countryList[countryCode];
             this.country = countryList[countryCode];
         }).catch((err) => {
