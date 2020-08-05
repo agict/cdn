@@ -3,7 +3,7 @@ var CoronaWidget = (function () {
     const countryCodeExpression = /loc=([\w]{2})/;
 
     function Widget() {
-        this.url = 'https://covid-19.dataflowkit.com/v1';
+        this.url = 'https://covid-19.dataflowkit.com/v1/Vietnam';
         this.ui = {
             mainContainer: null,
             country: null,
@@ -15,7 +15,6 @@ var CoronaWidget = (function () {
             active_cases: null,
             updateDate: null
         };
-        this.country = '';
         this.init();
     }
     Widget.prototype._updateData = function (e) {
@@ -28,7 +27,6 @@ var CoronaWidget = (function () {
             tot_recovered = this.ui.tot_recovered,
             active_cases = this.ui.active_cases,
             updateDate = this.ui.updateDate,
-            country = this.country,
             resp;
         xhr.timeout = 3000;
 
@@ -69,9 +67,6 @@ var CoronaWidget = (function () {
             console.log('Failed to retrieve COVID-19 statisctic.');
         }
 
-        if (country !== '') {
-            this.url += '/' + country;
-        }
         xhr.open('GET', this.url, true);
         xhr.send();
     }
@@ -79,7 +74,6 @@ var CoronaWidget = (function () {
     // _initUI associates Widget members with HTML DOM structure elements. 
     Widget.prototype._initUI = function () {
         this.ui.mainContainer = document.getElementById('container');
-        this.ui.country = document.getElementById('country');
         this.ui.tot_cases = document.getElementById('tot-cases');
         this.ui.new_cases = document.getElementById('new-cases');
         this.ui.tot_deaths = document.getElementById('tot-deaths');
@@ -87,33 +81,6 @@ var CoronaWidget = (function () {
         this.ui.tot_recovered = document.getElementById('tot-recover');
         this.ui.active_cases = document.getElementById('active-cases');
         this.ui.updateDate = document.getElementById('update-date');
-    }
-
-    //automatic country determination.
-    Widget.prototype.__initCountry = function () {
-        return new Promise((resolve, reject) => {
-            var xhr = new XHR();
-            xhr.timeout = 3000;
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    if (this.status == 200) {
-                        result = countryCodeExpression.exec(this.responseText)
-                        if (result == null || result[1] === '') {
-                            console.log('Failed determine country code');
-                            resolve('world');
-                        }
-                        resolve(result[1])
-                    } else {
-                        reject(xhr.status)
-                    }
-                }
-            }
-            xhr.ontimeout = function () {
-                reject('timeout')
-            }
-            xhr.open('GET', 'https://www.cloudflare.com/cdn-cgi/trace', true);
-            xhr.send();
-        });
     }
 
     Widget.prototype.init = function () {
@@ -129,40 +96,3 @@ var CoronaWidget = (function () {
     }
     return Widget;
 })();
-
-new CoronaWidget();
-
-const countryCodeExpression = /loc=([\w]{2})/;
-const userIPExpression = /ip=([\w\.]+)/;
-
-//automatic country determination.
-function initCountry() {
-    return new Promise((resolve, reject) => {
-        var xhr = new XMLHttpRequest();
-        xhr.timeout = 3000;
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    countryCode = countryCodeExpression.exec(this.responseText)
-                    ip = userIPExpression.exec(this.responseText)
-                    if (countryCode === null || countryCode[1] === '' ||
-                        ip === null || ip[1] === '') {
-                        reject('IP/Country code detection failed');
-                    }
-                    let result = {
-                        "countryCode": countryCode[1],
-                        "IP": ip[1]
-                    };
-                    resolve(result)
-                } else {
-                    reject(xhr.status)
-                }
-            }
-        }
-        xhr.ontimeout = function () {
-            reject('timeout')
-        }
-        xhr.open('GET', 'https://www.cloudflare.com/cdn-cgi/trace', true);
-        xhr.send();
-    });
-}
