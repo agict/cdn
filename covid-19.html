@@ -1,0 +1,34 @@
+<body>
+    <div class="covid19-card  dark_theme " style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,sans-serif">
+        <h4 id="country" class="covid19-title-big"></h4>
+        <div class="covid19-row">
+            <div class="covid19-col covid19-confirmed">
+                <div>
+                    <span id="tot-cases" class="covid19-num confirmed"></span>
+                    <span id="new-cases" class="subsidiary"></span>
+                </div>
+
+                <div class="covid19-title ">Ca Nhiễm</div>
+            </div>
+            <div class="covid19-col covid19-deaths">
+                <div>
+                    <span id="tot-deaths" class="covid19-num deaths-dark"></span>
+                    <span id="new-deaths" class="subsidiary"></span>
+                </div>
+                <div class="covid19-title">Tử Vonig</div>
+            </div>
+            <div class="covid19-col covid19-recovered">
+                <div id="tot-recover" class="covid19-num recovered"></div>
+                <div class="covid19-title">Hồi Phục</div>
+            </div>
+        </div>
+        <div class="covid19-row">
+            <div class="covid19-title">Cập nhật: <span id="update-date" class="covid19-num">2020-08-05 12:01</span>
+            </div>
+        </div>
+    </div>
+
+<script src="./countries.js"></script>
+<script src="./widget-covid.js"></script>
+
+</body>
