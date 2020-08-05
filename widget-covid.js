@@ -120,7 +120,7 @@ var CoronaWidget = (function () {
     Widget.prototype.init = function () {
         this._initUI();
         this.__initCountry().then((countryCode) => {
-            flag = '<img class="flag-img" src="https://covid-19.dataflowkit.com/assets/widget/flags/vn.svg" alt="' + countryList[countryCode] + '">';
+            flag = '<img class="flag-img" src="./flags/vn.svg" alt="' + countryList[countryCode] + '">';
             this.ui.country.innerHTML = flag + '&nbsp' + countryList[countryCode];
             this.country = countryList[countryCode];
         }).catch((err) => {
